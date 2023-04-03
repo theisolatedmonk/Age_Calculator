@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator</title>
+
+    <link href="/dist/output.css" rel="stylesheet" />
+</head>
+
+<body class="bg-red-50 h-screen flex justify-center items-center">
+    <div class="container font:poppins flex flex-col h-[340px] w-[400px] gap-2 rounded-l-xl rounded-tr-xl rounded-br-[100px] bg-white p-6">
+        <div class="timevaluetxtcontainer flex gap-4">
+            <div class="dayvalutxt flex flex-col gap-1">
+                <p class="day text-[8px] text-gray-500 font-bold">DAY</p>
+                <input type="number" min="1" max="31 
+                " placeholder="DD" class="dvalue border border-gray-500 rounded-md  text-center font-bold w-[70px] h-9" />
+                <p class="dtxt error1">This field is required</p>
+            </div>
+            <div class="monthvalutxt flex flex-col gap-1">
+                <p class="month text-[8px] text-gray-500 font-bold">MONTH</p>
+                <input type="number" placeholder="MM" min="1" max="12" class="mvalue border border-gray-500 rounded-md w-[70px] h-9 text-center font-bold" />
+                <p class="mtxt error1">This field is required</p>
+            </div>
+            <div class="dayvalutxt flex flex-col gap-1">
+                <p class="year text-[8px] text-gray-500 font-bold">YEAR</p>
+                <input type="number" placeholder="YYYY" min="1" max="9999" class="yvalue border border-gray-500 rounded-md w-[70px] h-9 text-center font-bold" />
+                <p class="ytxt error1">This field is required</p>
+            </div>
+        </div>
+        <div class="linebtn flex items-center">
+            <hr class="w-80" />
+            <button class="btn focus:bg-black bg-violet-500 h- h-10 w-10 rounded-full p-2" type="button">
+          <img src="\assets\images\icon-arrow.svg" alt="" />
+        </button>
+        </div>
+        <div class="ymdcontainer font-extrabold italic flex flex-col text-6xl w-72">
+            <div class="dashyear flex">
+                <p class="dashy text-violet-500">--</p>
+                <p class="year">years</p>
+            </div>
+            <div class="dashmonth flex">
+                <p class="dashm text-violet-500">--</p>
+                <p class="month">months</p>
+            </div>
+            <div class="dashday flex">
+                <p class="dashy text-violet-500">--</p>
+                <p class="day">days</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

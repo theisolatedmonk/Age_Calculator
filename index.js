@@ -21,6 +21,12 @@ const day = parseInt(dayInput.value)
 const month = parseInt(monthInput.value)
 const year = parseInt(yearInput.value)
 
+function handleSubmit(e) {
+    e.preventDefault();
+
+}
+
+
 function userDate(day, month, year) {
     const date = new Date(year, month - 1, day);
     return date
@@ -32,12 +38,12 @@ console.log(today.getFullYear(), today.getMonth() + 1, today.getDate());
 
 function txtborderColorRed() {
     dayInput.style.borderColor = 'red'
-    monthInput.style.borderColor = 'red';
-    yearInput.style.borderColor = 'red';
+    monthInput.style.borderColor = '#dc2626';
+    yearInput.style.borderColor = '#dc2626';
 
-    dayTxt.style.color = 'red';
-    monthTxt.style.color = 'red';
-    yearTxt.style.color = 'red';
+    dayTxt.style.color = '#dc2626';
+    monthTxt.style.color = '#dc2626';
+    yearTxt.style.color = '#dc2626';
 
 }
 
@@ -60,17 +66,27 @@ btn.addEventListener('click', () => {
 
     if (isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
         // dayEerror.classList.add('!flex', '!text-green-400', '!text-2xl');
-        dayEerror.innerHTML = ' '
-        monthEerror.innerHTML = ' '
-        yearEerror.innerHTML = ' '
+        dayEerror.innerHTML = ''
+        monthEerror.innerHTML = ''
+        yearEerror.innerHTML = ''
 
+        dayValue.innerHTML = '--'
+        monthValue.innerHTML = '--'
+        yearValue.innerHTML = '--'
+
+        dayInput.style.borderColor = '#6b7280'
+        monthInput.style.borderColor = '#6b7280';
+        yearInput.style.borderColor = '#6b7280';
+
+        dayTxt.style.color = '#6b7280'
+        monthTxt.style.color = '#6b7280';
+        yearTxt.style.color = '#6b7280';
 
 
     }
     if (dayInput.value < 1) {
         dayEerror.classList.add('!flex');
         dayEerror.innerHTML = 'This field is requiered'
-
         txtborderColorRed()
 
     } else if (dayInput.value > 0 && !isValidDate(dayInput.value, monthInput.value, yearInput.value)) {

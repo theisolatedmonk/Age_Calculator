@@ -12,46 +12,48 @@
 </head>
 
 <body class="bg-red-50 h-screen flex justify-center items-center">
-    <div class="container font:poppins flex flex-col h-[340px] w-[400px] gap-2 rounded-l-xl rounded-tr-xl rounded-br-[100px] bg-white p-6">
-        <div class="timevaluetxtcontainer flex gap-4">
-            <div class="dayvalutxt flex flex-col gap-1">
-                <p id="day-txt" class="day text-[8px] text-gray-500 font-bold">DAY</p>
-                <input id="day-input" type="number" min="1" max="31 
-                " placeholder="DD" class="dvalue border border-gray-500 rounded-md  text-center font-bold w-[70px] h-9 hover:border-violet-500 focus:border-violet-500 outline-none" />
-                <p id="day-error" class="dtxt error1">This field is required</p>
+    <form action="" onsubmit="handleSubmit(event)">
+        <div class="container font:poppins flex flex-col h-[340px] w-[400px] gap-2 rounded-l-xl rounded-tr-xl rounded-br-[100px] bg-white p-6">
+            <div class="timevaluetxtcontainer flex gap-4">
+                <div class="dayvalutxt flex flex-col gap-1">
+                    <p id="day-txt" class="day text-[8px] text-gray-500 font-bold">DAY</p>
+                    <input id="day-input" type="number" min="1" max="31 
+                    " placeholder="DD" class="dvalue border border-gray-500 rounded-md  text-center font-bold w-[70px] h-9 hover:border-violet-500 focus:border-violet-500 outline-none" />
+                    <p id="day-error" class="dtxt error1">This field is required</p>
+                </div>
+                <div class="monthvalutxt flex flex-col gap-1">
+                    <p id="month-txt" class="month text-[8px] text-gray-500 font-bold">MONTH</p>
+                    <input id="month-input" type="number" placeholder="MM" min="1" max="12" class="mvalue border border-gray-500 rounded-md w-[70px] h-9 text-center font-bold hover:border-violet-500 focus:border-violet-500 outline-none" />
+                    <p id="month-error" class="mtxt error1">This field is required</p>
+                </div>
+                <div class="dayvalutxt flex flex-col gap-1">
+                    <p id="year-txt" class="year text-[8px] text-gray-500 font-bold">YEAR</p>
+                    <input id="year-input" type="number" placeholder="YYYY" min="1" max="9999" class="yvalue border border-gray-500 rounded-md w-[70px] h-9 text-center font-bold hover:border-violet-500 focus:border-violet-500 outline-none" />
+                    <p id="year-error" class="ytxt error1">This field is required</p>
+                </div>
             </div>
-            <div class="monthvalutxt flex flex-col gap-1">
-                <p id="month-txt" class="month text-[8px] text-gray-500 font-bold">MONTH</p>
-                <input id="month-input" type="number" placeholder="MM" min="1" max="12" class="mvalue border border-gray-500 rounded-md w-[70px] h-9 text-center font-bold hover:border-violet-500 focus:border-violet-500 outline-none" />
-                <p id="month-error" class="mtxt error1">This field is required</p>
+            <div class="linebtn flex items-center">
+                <hr class="w-80" />
+                <button type="submit" id="btn" class=" hover:bg-black bg-violet-500 h- h-10 w-10 rounded-full p-2" type="button">
+              <img src="\assets\images\icon-arrow.svg" alt="" />
+            </button>
             </div>
-            <div class="dayvalutxt flex flex-col gap-1">
-                <p id="year-txt" class="year text-[8px] text-gray-500 font-bold">YEAR</p>
-                <input id="year-input" type="number" placeholder="YYYY" min="1" max="9999" class="yvalue border border-gray-500 rounded-md w-[70px] h-9 text-center font-bold hover:border-violet-500 focus:border-violet-500 outline-none" />
-                <p id="year-error" class="ytxt error1">This field is required</p>
+            <div class="ymdcontainer font-extrabold italic flex flex-col text-6xl w-72">
+                <div class="dashyear flex">
+                    <p id="day-value" class="dashy text-violet-500">--</p>
+                    <p class="year">years</p>
+                </div>
+                <div class="dashmonth flex">
+                    <p id="month-value" class="dashm text-violet-500">--</p>
+                    <p class="month">months</p>
+                </div>
+                <div class="dashday flex">
+                    <p id="year-value" class="dashy text-violet-500">--</p>
+                    <p class="day">days</p>
+                </div>
             </div>
         </div>
-        <div class="linebtn flex items-center">
-            <hr class="w-80" />
-            <button id="btn" class=" hover:bg-black bg-violet-500 h- h-10 w-10 rounded-full p-2" type="button">
-          <img src="\assets\images\icon-arrow.svg" alt="" />
-        </button>
-        </div>
-        <div class="ymdcontainer font-extrabold italic flex flex-col text-6xl w-72">
-            <div class="dashyear flex">
-                <p id="day-value" class="dashy text-violet-500">--</p>
-                <p class="year">years</p>
-            </div>
-            <div class="dashmonth flex">
-                <p id="month-value" class="dashm text-violet-500">--</p>
-                <p class="month">months</p>
-            </div>
-            <div class="dashday flex">
-                <p id="year-value" class="dashy text-violet-500">--</p>
-                <p class="day">days</p>
-            </div>
-        </div>
-    </div>
+    </form>
 </body>
 
 </html>

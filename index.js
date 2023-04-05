@@ -103,34 +103,28 @@ btn.addEventListener('click', () => {
         txtborderColorRed()
     }
     if (monthInput.value < 1) {
-        monthEerror.classList.add('!flex');
         monthEerror.innerHTML = 'This field is requiered'
         txtborderColorRed()
     } else if (monthInput.value > 12) {
-        monthEerror.classList.add('!flex');
         monthEerror.innerHTML = 'Must be a valid month'
         txtborderColorRed()
     } else if (!isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
-        monthEerror.classList.add('!flex');
         monthEerror.innerHTML = 'Must be a valid month'
         txtborderColorRed()
     } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
         console.log('wroking')
-        monthEerror.classList.add('!flex');
         monthEerror.innerHTML = 'Must be in the past'
         txtborderColorRed()
     }
     if (yearInput.value < 1) {
-        yearEerror.classList.add('!flex');
+        yearEerror.innerHTML = 'This field is requiered'
         txtborderColorRed()
     } else if (!isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
-        yearEerror.classList.add('!flex');
         yearEerror.innerHTML = 'Must be a valid year'
 
         txtborderColorRed()
     } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
         console.log('wroking')
-        yearEerror.classList.add('!flex');
         yearEerror.innerHTML = 'Must be in the past'
         txtborderColorRed()
     } else {

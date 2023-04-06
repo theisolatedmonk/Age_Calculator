@@ -1,139 +1,136 @@
 const dayTxt = document.getElementById('day-txt');
 const monthTxt = document.getElementById('month-txt');
 const yearTxt = document.getElementById('year-txt');
-
 const dayInput = document.getElementById('day-input');
 const monthInput = document.getElementById('month-input');
 const yearInput = document.getElementById('year-input');
-
 const dayEerror = document.getElementById('day-error');
 const monthEerror = document.getElementById('month-error');
 const yearEerror = document.getElementById('year-error');
-
 const btn = document.getElementById('btn');
-
 const dayValue = document.getElementById('day-value');
 const monthValue = document.getElementById('month-value');
 const yearValue = document.getElementById('year-value');
 
-
 const day = parseInt(dayInput.value)
 const month = parseInt(monthInput.value)
 const year = parseInt(yearInput.value)
+const today = new Date();
 
 function handleSubmit(e) {
     e.preventDefault();
-
 }
-
 
 function userDate(day, month, year) {
     const date = new Date(year, month - 1, day);
     return date
 }
 
-const today = new Date();
+errorMsg = {
+    dayEerror1: function() {
+        dayEerror.innerHTML = 'This field is requiered'
+        txtborderColorRed()
+    },
+    dayEerror2: function() {
+        dayEerror.innerHTML = 'Must be a valid day'
+        txtborderColorRed()
+    },
+    dayEerror3: function() {
+        dayEerror.innerHTML = 'Must be in the past'
+        txtborderColorRed()
+    },
+    monthEerror1: function() {
+        monthEerror.innerHTML = 'This field is requiered'
+        txtborderColorRed()
+    },
+    monthEerror2: function() {
+        monthEerror.innerHTML = 'Must be a valid day '
+        txtborderColorRed()
+    },
+    monthEerror3: function() {
+        monthEerror.innerHTML = 'Must be in the past'
+        txtborderColorRed()
+    },
+    yearEerror1: function() {
+        yearEerror.innerHTML = 'This field is requiered'
+        txtborderColorRed()
+    },
+    yearEerror2: function() {
+        yearEerror.innerHTML = 'Must be a valid day'
+        txtborderColorRed()
+    },
+    yearEerror3: function() {
+        yearEerror.innerHTML = 'Must be in the past'
+        txtborderColorRed()
+    }
 
-console.log(today.getFullYear(), today.getMonth() + 1, today.getDate());
+
+}
+
+
 
 function txtborderColorRed() {
     dayInput.style.borderColor = 'red'
     monthInput.style.borderColor = '#dc2626';
     yearInput.style.borderColor = '#dc2626';
-
     dayTxt.style.color = '#dc2626';
     monthTxt.style.color = '#dc2626';
     yearTxt.style.color = '#dc2626';
-
 }
 
 function isValidDate(inputDay, inputMonth, inputYear) {
     const day = parseInt(inputDay)
     const month = parseInt(inputMonth)
     const year = parseInt(inputYear)
-
-    // Check if the month is valid
     if (month < 1 || month > 12) {
         return false;
     }
-
     const date = new Date(year, month - 1, day);
     return date.getDate() === day && date.getMonth() === month - 1 && date.getFullYear() === year;
 }
 
-
 btn.addEventListener('click', () => {
-
     if (isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
-        // dayEerror.classList.add('!flex', '!text-green-400', '!text-2xl');
         dayEerror.innerHTML = ''
         monthEerror.innerHTML = ''
         yearEerror.innerHTML = ''
-
         dayValue.innerHTML = '--'
         monthValue.innerHTML = '--'
         yearValue.innerHTML = '--'
-
         dayInput.style.borderColor = '#6b7280'
         monthInput.style.borderColor = '#6b7280';
         yearInput.style.borderColor = '#6b7280';
-
         dayTxt.style.color = '#6b7280'
         monthTxt.style.color = '#6b7280';
         yearTxt.style.color = '#6b7280';
-
-
     }
     if (dayInput.value < 1) {
-        dayEerror.classList.add('!flex');
-        dayEerror.innerHTML = 'This field is requiered'
-        txtborderColorRed()
-
+        errorMsg.dayEerror1();
     } else if (dayInput.value > 0 && !isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
-        // console.log('btn click day')
-
-        console.log(typeof monthInput.value)
-        dayEerror.classList.add('!flex');
-        dayEerror.innerHTML = 'Must be a valid day '
-        txtborderColorRed()
+        errorMsg.dayEerror2();
     } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
-        console.log('wrokingday')
-        dayEerror.classList.add('!flex');
-        dayEerror.innerHTML = 'Must be in the past'
-        txtborderColorRed()
+        errorMsg.dayEerror3();
     }
     if (monthInput.value < 1) {
-        monthEerror.innerHTML = 'This field is requiered'
-        txtborderColorRed()
+        errorMsg.monthEerror1();
     } else if (monthInput.value > 12) {
-        monthEerror.innerHTML = 'Must be a valid month'
-        txtborderColorRed()
+        errorMsg.monthEerror2();
     } else if (!isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
-        monthEerror.innerHTML = 'Must be a valid month'
-        txtborderColorRed()
+        errorMsg.monthEerror2();
     } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
-        console.log('wroking')
-        monthEerror.innerHTML = 'Must be in the past'
-        txtborderColorRed()
+        errorMsg.monthEerror3();
     }
     if (yearInput.value < 1) {
-        yearEerror.innerHTML = 'This field is requiered'
-        txtborderColorRed()
+        errorMsg.yearEerror1();
     } else if (!isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
-        yearEerror.innerHTML = 'Must be a valid year'
-
-        txtborderColorRed()
+        errorMsg.yearEerror2();
     } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
-        console.log('wroking')
-        yearEerror.innerHTML = 'Must be in the past'
-        txtborderColorRed()
+        errorMsg.yearEerror3();
     } else {
         age = today - userDate(dayInput.value, monthInput.value, yearInput.value)
-        console.log('age', age)
 
         function msToYearsMonthsDays(age) {
             const totalDays = Math.floor(age / (1000 * 60 * 60 * 24));
-
             let years = Math.floor(totalDays / 365);
             let months = Math.floor((totalDays % 365) / 30);
 
@@ -146,88 +143,10 @@ btn.addEventListener('click', () => {
                 years--;
                 months += 12;
             }
-
             return { days, years, months };
-
         }
         yearValue.innerHTML = msToYearsMonthsDays(age).days
-
         monthValue.innerHTML = msToYearsMonthsDays(age).months
         dayValue.innerHTML = msToYearsMonthsDays(age).years
-
     }
-
-
 });
-
-// function msToYearsMonthsDays(age) {
-//     const totalDays = Math.floor(ms / (1000 * 60 * 60 * 24));
-
-//     let years = Math.floor(totalDays / 365);
-//     let months = Math.floor((totalDays % 365) / 30);
-
-//     let days = totalDays - (years * 365) - (months * 30);
-//     if (days < 0) {
-//       months--;
-//       days += 30;
-//     }
-//     if (months < 0) {
-//       years--;
-//       months += 12;
-//     }
-
-//     return { years, months, days };
-//   }
-
-//   // Example usage
-//   const ms = 1000000000000;
-//   const diff = msToYearsMonthsDays(ms);
-//   console.log(`Years: ${diff.years}`);
-//   console.log(`Months: ${diff.months}`);
-//   console.log(`Days: ${diff.days}`);
-
-
-// age = today - userDate(dayInput.value, monthInput.value, yearInput.value)
-// console.log('age', age)
-
-// today.getFullYear(), today.getMonth() + 1, today.getDate()
-
-// const today = new Date();
-// const day1 = today.getDate();
-// const month1 = today.getMonth() + 1; // Note: month starts from 0
-// const year1 = today.getFullYear()
-
-// dayEerror.classList.add('!flex');
-// monthEerror.classList.add('!flex');
-// yearEerror.classList.add('!flex');
-
-
-// (day == '' && month == '' && year == '')
-
-
-// age = today - userDate(dayInput.value, monthInput.value, yearInput.value)
-// console.log('age', age)
-
-// function msToYearsMonthsDays(age) {
-//     const totalDays = Math.floor(age / (1000 * 60 * 60 * 24));
-
-//     let years = Math.floor(totalDays / 365);
-//     let months = Math.floor((totalDays % 365) / 30);
-
-//     let days = totalDays - (years * 365) - (months * 30);
-//     if (days < 0) {
-//         months--;
-//         days += 30;
-//     }
-//     if (months < 0) {
-//         years--;
-//         months += 12;
-//     }
-
-//     return { years, months, days };
-
-// }
-// const diff = msToYearsMonthsDays(age);
-// yearValue.innerHTML = diff.years
-// monthValue.innerHTML = diff.months
-// dayValue.innerHTML = diff.days

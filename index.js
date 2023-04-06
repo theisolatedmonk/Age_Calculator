@@ -25,52 +25,64 @@ function userDate(day, month, year) {
     const date = new Date(year, month - 1, day);
     return date
 }
-
 errorMsg = {
     dayEerror1: function() {
         dayEerror.innerHTML = 'This field is requiered'
         txtborderColorRed()
+        blank()
     },
     dayEerror2: function() {
         dayEerror.innerHTML = 'Must be a valid day'
         txtborderColorRed()
+        blank()
     },
     dayEerror3: function() {
         dayEerror.innerHTML = 'Must be in the past'
         txtborderColorRed()
+        blank()
     },
     monthEerror1: function() {
         monthEerror.innerHTML = 'This field is requiered'
         txtborderColorRed()
+        blank()
     },
     monthEerror2: function() {
         monthEerror.innerHTML = 'Must be a valid month '
         txtborderColorRed()
+        blank()
     },
     monthEerror3: function() {
         monthEerror.innerHTML = 'Must be in the past'
         txtborderColorRed()
+        blank()
     },
     yearEerror1: function() {
         yearEerror.innerHTML = 'This field is requiered'
         txtborderColorRed()
+        blank()
     },
     yearEerror2: function() {
         yearEerror.innerHTML = 'Must be a valid year'
         txtborderColorRed()
+        blank()
     },
     yearEerror3: function() {
         yearEerror.innerHTML = 'Must be in the past'
         txtborderColorRed()
+        blank()
     }
 
 
 }
 
-
+function blank() {
+    dayValue.innerHTML = '--'
+    monthValue.innerHTML = '--'
+    yearValue.innerHTML = '--'
+}
 
 function txtborderColorRed() {
-    dayInput.style.borderColor = 'red'
+    dayInput.style.borderColor = '#dc2626';
     monthInput.style.borderColor = '#dc2626';
     yearInput.style.borderColor = '#dc2626';
     dayTxt.style.color = '#dc2626';
@@ -88,20 +100,21 @@ function isValidDate(inputDay, inputMonth, inputYear) {
     const date = new Date(year, month - 1, day);
     return date.getDate() === day && date.getMonth() === month - 1 && date.getFullYear() === year;
 }
-
 btn.addEventListener('click', () => {
     if (isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
-        dayEerror.innerHTML, monthEerror.innerHTML, yearEerror.innerHTML = ''
-        dayValue.innerHTML = '--'
-        monthValue.innerHTML = '--'
-        yearValue.innerHTML = '--'
-        dayInput.style.borderColor = '#6b7280'
+        blank()
+        dayEerror.innerHTML = ''
+        monthEerror.innerHTML = ''
+        yearEerror.innerHTML = ''
+        dayInput.style.borderColor = '#6b7280';
         monthInput.style.borderColor = '#6b7280';
         yearInput.style.borderColor = '#6b7280';
-        dayTxt.style.color = '#6b7280'
+        dayTxt.style.color = '#6b7280';
         monthTxt.style.color = '#6b7280';
         yearTxt.style.color = '#6b7280';
+
     }
+
     if (dayInput.value < 1) {
         errorMsg.dayEerror1();
     } else if (dayInput.value > 0 && !isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
@@ -125,13 +138,13 @@ btn.addEventListener('click', () => {
     } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
         errorMsg.yearEerror3();
     } else {
+
         age = today - userDate(dayInput.value, monthInput.value, yearInput.value)
 
         function msToYearsMonthsDays(age) {
             const totalDays = Math.floor(age / (1000 * 60 * 60 * 24));
             let years = Math.floor(totalDays / 365);
             let months = Math.floor((totalDays % 365) / 30);
-
             let days = totalDays - (years * 365) - (months * 30);
             if (days < 0) {
                 months--;

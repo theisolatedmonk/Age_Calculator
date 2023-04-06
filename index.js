@@ -44,7 +44,7 @@ errorMsg = {
         txtborderColorRed()
     },
     monthEerror2: function() {
-        monthEerror.innerHTML = 'Must be a valid day '
+        monthEerror.innerHTML = 'Must be a valid month '
         txtborderColorRed()
     },
     monthEerror3: function() {
@@ -56,7 +56,7 @@ errorMsg = {
         txtborderColorRed()
     },
     yearEerror2: function() {
-        yearEerror.innerHTML = 'Must be a valid day'
+        yearEerror.innerHTML = 'Must be a valid year'
         txtborderColorRed()
     },
     yearEerror3: function() {
@@ -91,9 +91,7 @@ function isValidDate(inputDay, inputMonth, inputYear) {
 
 btn.addEventListener('click', () => {
     if (isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
-        dayEerror.innerHTML = ''
-        monthEerror.innerHTML = ''
-        yearEerror.innerHTML = ''
+        dayEerror.innerHTML, monthEerror.innerHTML, yearEerror.innerHTML = ''
         dayValue.innerHTML = '--'
         monthValue.innerHTML = '--'
         yearValue.innerHTML = '--'

@@ -19,13 +19,14 @@ const today = new Date();
 
 function handleSubmit(e) {
     e.preventDefault();
+    // onSubmit()
 }
 
 function userDate(day, month, year) {
     const date = new Date(year, month - 1, day);
     return date
 }
-errorMsg = {
+const errorMsg = {
     dayEerror1: function() {
         dayEerror.innerHTML = 'This field is requiered'
         txtborderColorRed()
@@ -82,6 +83,7 @@ function blank() {
 }
 
 function txtborderColorRed() {
+
     dayInput.style.borderColor = '#dc2626';
     monthInput.style.borderColor = '#dc2626';
     yearInput.style.borderColor = '#dc2626';
@@ -100,7 +102,15 @@ function isValidDate(inputDay, inputMonth, inputYear) {
     const date = new Date(year, month - 1, day);
     return date.getDate() === day && date.getMonth() === month - 1 && date.getFullYear() === year;
 }
-btn.addEventListener('click', () => {
+btn.addEventListener('click', onSubmit);
+
+
+
+function onSubmit() {
+
+
+
+
     if (isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
         blank()
         dayEerror.innerHTML = ''
@@ -135,7 +145,7 @@ btn.addEventListener('click', () => {
         errorMsg.yearEerror1();
     } else if (!isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
         errorMsg.yearEerror2();
-    } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
+    } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value) || year > ) {
         errorMsg.yearEerror3();
     } else {
 
@@ -160,4 +170,22 @@ btn.addEventListener('click', () => {
         monthValue.innerHTML = msToYearsMonthsDays(age).months
         dayValue.innerHTML = msToYearsMonthsDays(age).years
     }
-});
+
+}
+//  if (!isValidYear(year)) {
+//     return false;
+//   }
+// if function isValidMonth(year, month) {
+//     // check if year is valid
+//     if (!isValidYear(year)) {
+//       return false;
+//     }
+
+//     // check if month is a number between 1 and 12
+//     if (isNaN(month) || month < 1 || month > 12) {
+//       return false;
+//     }
+
+//     // if all checks pass, month is valid
+//     return true;
+//   }

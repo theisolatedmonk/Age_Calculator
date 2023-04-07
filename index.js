@@ -17,6 +17,9 @@ const month = parseInt(monthInput.value)
 const year = parseInt(yearInput.value)
 const today = new Date();
 
+
+
+
 function handleSubmit(e) {
     e.preventDefault();
     // onSubmit()
@@ -125,27 +128,42 @@ function onSubmit() {
 
     }
 
+    //  handle only day error message
     if (dayInput.value < 1) {
         errorMsg.dayEerror1();
-    } else if (dayInput.value > 0 && !isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
+    } else if (dayInput.value > 31 && monthInput.value == '' && yearInput.value == '') {
+        console.log('day vlid')
         errorMsg.dayEerror2();
-    } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
-        errorMsg.dayEerror3();
+    } else if (dayInput.value > 29 && monthInput.value == 2 && yearInput.value == '') {
+        console.log('day vlid')
+        errorMsg.dayEerror2();
+    } else if (dayInput.value > 31 && monthInput.value > today.getMonth() && yearInput.value > today.getFullYear()) {
+        console.log('day vlid')
+        errorMsg.dayEerror2();
     }
+    //  else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
+    //     errorMsg.dayEerror3();
+    // }
+
+
     if (monthInput.value < 1) {
         errorMsg.monthEerror1();
-    } else if (monthInput.value > 12) {
+    } else if (monthInput.value > 12 && yearInput.value == '') {
         errorMsg.monthEerror2();
-    } else if (!isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
-        errorMsg.monthEerror2();
-    } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
+    } else if (monthInput.value > today.getMonth() && yearInput.value == today.getFullYear()) {
         errorMsg.monthEerror3();
     }
+    // else if (!isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
+    //     errorMsg.monthEerror2();
+    // } 
+    // else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
+    //     errorMsg.monthEerror3();
+    // }
     if (yearInput.value < 1) {
         errorMsg.yearEerror1();
     } else if (!isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
         errorMsg.yearEerror2();
-    } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value) || year > ) {
+    } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value) || year > today.getFullYear) {
         errorMsg.yearEerror3();
     } else {
 

@@ -19,7 +19,7 @@ const today = new Date();
 
 function handleSubmit(e) {
     e.preventDefault();
-    // onSubmit()
+    onSubmit()
 }
 
 function userDate(day, month, year) {
@@ -145,7 +145,7 @@ function onSubmit() {
         errorMsg.yearEerror1();
     } else if (!isValidDate(dayInput.value, monthInput.value, yearInput.value)) {
         errorMsg.yearEerror2();
-    } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value) || year > ) {
+    } else if (today < userDate(dayInput.value, monthInput.value, yearInput.value)) {
         errorMsg.yearEerror3();
     } else {
 

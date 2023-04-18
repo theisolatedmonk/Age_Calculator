@@ -13,7 +13,8 @@
 </head>
 
 <body class="bg-red-50 h-screen flex justify-center items-center">
-    <form action="" onsubmit="handleSubmit(event)">
+    <form class="flex flex-col justify-center items-center gap-4" action="" onsubmit="handleSubmit(event)">
+        <div class="tital w-[400px] drop-shadow-2xl  h-12 text-gray-800  text-center flex justify-center items-center  rounded-2xl font-extrabold italic text-4xl">Age Calculator</div>
         <div class="container font:poppins flex flex-col h-[350px] w-[400px] gap-2 rounded-l-xl rounded-tr-xl rounded-br-[100px] bg-white p-6">
             <div class="timevaluetxtcontainer flex gap-4">
                 <div class="dayvalutxt flex flex-col gap-1">
@@ -27,7 +28,7 @@
                 </div>
                 <div class="monthvalutxt flex flex-col gap-1">
                     <p id="month-txt" class="month text-[8px] text-gray-500 font-bold">MONTH</p>
-                    <input id="month-input" type="number" placeholder="MM" min="1" max="12" class="mvalue border border-gray-500 rounded-md w-[70px] h-9 text-center font-bold hover:border-violet-500 focus:border-violet-500 outline-none" />
+                    <input id="month-input" type="number" placeholder="MM" class="mvalue border border-gray-500 rounded-md w-[70px] h-9 text-center font-bold hover:border-violet-500 focus:border-violet-500 outline-none" />
                     <div class="h-2">
                         <p id="month-error" class="mtxt error1"></p>
                     </div>
